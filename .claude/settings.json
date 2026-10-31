@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(make *)",
+      "Bash(go test *)", "Bash(go build *)", "Bash(go vet *)", "Bash(gofmt *)",
+      "Bash(golangci-lint *)",
+      "Bash(php artisan *)", "Bash(./vendor/bin/pest *)", "Bash(./vendor/bin/pint *)",
+      "Bash(composer *)",
+      "Bash(pnpm *)", "Bash(npx *)",
+      "Bash(docker compose *)", "Bash(docker logs *)", "Bash(docker ps *)",
+      "Bash(git status *)", "Bash(git diff *)", "Bash(git log *)", "Bash(git add *)",
+      "Bash(rg *)", "Bash(jq *)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(git push *)",
+      "Bash(docker compose down -v*)",
+      "Bash(terraform apply *)", "Bash(terraform destroy *)",
+      "Bash(kubectl delete *)",
+      "Read(./**/.env)", "Read(./**/.env.*)", "Read(./infra/terraform/**/*.tfstate)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          { "type": "command", "command": "jq -r '.tool_input.file_path' | xargs -r ./scripts/format.sh" }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://antojopos.dev/contracts/events/inventory.stock.low.v1.json",
+  "title": "inventory.stock.low.v1",
+  "allOf": [
+    {
+      "$ref": "_envelope.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "const": "inventory.stock.low.v1"
+        },
+        "producer": {
+          "const": "inventory"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "supply_id",
+            "name",
+            "quantity_remaining",
+            "unit",
+            "minimum_threshold"
+          ],
+          "properties": {
+            "supply_id": {
+              "type": "string",
+              "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+              "description": ""
+            },
+            "name": {
+              "type": "string"
+            },
+            "quantity_remaining": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "enum": [
+                "g",
+                "kg",
+                "ml",
+                "l",
+                "piece"
+              ]
+            },
+            "minimum_threshold": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    }
+  ]
+}

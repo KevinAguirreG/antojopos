@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://antojopos.dev/contracts/events/orders.order.opened.v1.json",
+  "title": "orders.order.opened.v1",
+  "allOf": [
+    {
+      "$ref": "_envelope.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "const": "orders.order.opened.v1"
+        },
+        "producer": {
+          "const": "orders"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "order_id",
+            "table_id",
+            "waiter_user_id"
+          ],
+          "properties": {
+            "order_id": {
+              "type": "string",
+              "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+              "description": ""
+            },
+            "table_id": {
+              "type": "string",
+              "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+              "description": ""
+            },
+            "waiter_user_id": {
+              "type": "string",
+              "format": "uuid",
+              "description": ""
+            },
+            "guest_count": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      }
+    }
+  ]
+}

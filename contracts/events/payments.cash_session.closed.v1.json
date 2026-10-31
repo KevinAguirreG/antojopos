@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://antojopos.dev/contracts/events/payments.cash_session.closed.v1.json",
+  "title": "payments.cash_session.closed.v1",
+  "allOf": [
+    {
+      "$ref": "_envelope.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "const": "payments.cash_session.closed.v1"
+        },
+        "producer": {
+          "const": "payments"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "cash_session_id",
+            "expected_cents",
+            "counted_cents",
+            "difference_cents",
+            "closed_by_user_id"
+          ],
+          "properties": {
+            "cash_session_id": {
+              "type": "string",
+              "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+              "description": ""
+            },
+            "expected_cents": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Cents, MXN."
+            },
+            "counted_cents": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Cents, MXN."
+            },
+            "difference_cents": {
+              "type": "integer",
+              "description": "Can be negative (short) or positive (over)."
+            },
+            "closed_by_user_id": {
+              "type": "string",
+              "format": "uuid",
+              "description": ""
+            }
+          }
+        }
+      }
+    }
+  ]
+}

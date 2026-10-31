@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://antojopos.dev/contracts/events/orders.order.cancelled.v1.json",
+  "title": "orders.order.cancelled.v1",
+  "allOf": [
+    {
+      "$ref": "_envelope.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "const": "orders.order.cancelled.v1"
+        },
+        "producer": {
+          "const": "orders"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "order_id",
+            "reason",
+            "authorized_by_user_id"
+          ],
+          "properties": {
+            "order_id": {
+              "type": "string",
+              "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+              "description": ""
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "authorized_by_user_id": {
+              "type": "string",
+              "format": "uuid",
+              "description": "Cancelling requires authorization; see the audit trail in §7."
+            }
+          }
+        }
+      }
+    }
+  ]
+}

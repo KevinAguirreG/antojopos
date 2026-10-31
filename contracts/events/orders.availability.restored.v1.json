@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://antojopos.dev/contracts/events/orders.availability.restored.v1.json",
+  "title": "orders.availability.restored.v1",
+  "allOf": [
+    {
+      "$ref": "_envelope.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "const": "orders.availability.restored.v1"
+        },
+        "producer": {
+          "const": "orders"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "product_ref",
+            "branch_id",
+            "source"
+          ],
+          "properties": {
+            "product_ref": {
+              "type": "string",
+              "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+              "description": ""
+            },
+            "branch_id": {
+              "type": "string",
+              "format": "uuid",
+              "description": ""
+            },
+            "source": {
+              "type": "string",
+              "enum": [
+                "kitchen",
+                "inventory"
+              ]
+            },
+            "restored_by_user_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uuid"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

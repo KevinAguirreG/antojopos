@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://antojopos.dev/contracts/events/orders.order.closed.v1.json",
+  "title": "orders.order.closed.v1",
+  "allOf": [
+    {
+      "$ref": "_envelope.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "const": "orders.order.closed.v1"
+        },
+        "producer": {
+          "const": "orders"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "order_id",
+            "lines",
+            "total_cents"
+          ],
+          "properties": {
+            "order_id": {
+              "type": "string",
+              "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+              "description": ""
+            },
+            "lines": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "line_id",
+                  "product_ref",
+                  "name_snapshot",
+                  "unit_price_cents_snapshot",
+                  "quantity"
+                ],
+                "properties": {
+                  "line_id": {
+                    "type": "string",
+                    "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+                    "description": "Generated on the client. The line's idempotency key."
+                  },
+                  "product_ref": {
+                    "type": "string",
+                    "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+                    "description": "Reference into catalog, not a foreign key."
+                  },
+                  "name_snapshot": {
+                    "type": "string"
+                  },
+                  "unit_price_cents_snapshot": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Cents, MXN."
+                  },
+                  "modifiers_snapshot": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "name",
+                        "price_cents"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "price_cents": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "description": "Cents, MXN."
+                        }
+                      }
+                    },
+                    "default": []
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
+                }
+              }
+            },
+            "total_cents": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Cents, MXN."
+            }
+          }
+        }
+      }
+    }
+  ]
+}

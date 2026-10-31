@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://antojopos.dev/contracts/events/orders.payment.requested.v1.json",
+  "title": "orders.payment.requested.v1",
+  "allOf": [
+    {
+      "$ref": "_envelope.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "const": "orders.payment.requested.v1"
+        },
+        "producer": {
+          "const": "orders"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "order_id",
+            "total_cents"
+          ],
+          "properties": {
+            "order_id": {
+              "type": "string",
+              "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+              "description": ""
+            },
+            "total_cents": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Cents, MXN."
+            },
+            "requested_at": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

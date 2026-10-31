@@ -1,0 +1,16 @@
+{
+  "event_id": "33C6EB225EB246DEC78F1CBC8B",
+  "event_type": "orders.order.cancelled.v1",
+  "occurred_at": "2026-09-12T20:14:03.311Z",
+  "tenant_id": "11111111-1111-4111-8111-111111111111",
+  "branch_id": "22222222-2222-4222-8222-222222222222",
+  "correlation_id": "33333333-3333-4333-8333-333333333333",
+  "causation_id": null,
+  "producer": "orders",
+  "schema_version": 1,
+  "payload": {
+    "order_id": "1183DE30DEE7DA212AE1F0320F",
+    "reason": "Guest left without ordering",
+    "authorized_by_user_id": "44444444-4444-4444-8444-444444444444"
+  }
+}

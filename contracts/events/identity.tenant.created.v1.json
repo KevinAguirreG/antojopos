@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://antojopos.dev/contracts/events/identity.tenant.created.v1.json",
+  "title": "identity.tenant.created.v1",
+  "allOf": [
+    {
+      "$ref": "_envelope.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "const": "identity.tenant.created.v1"
+        },
+        "producer": {
+          "const": "identity"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "tenant_id",
+            "name",
+            "plan",
+            "timezone"
+          ],
+          "properties": {
+            "tenant_id": {
+              "type": "string",
+              "format": "uuid",
+              "description": "Same as the envelope's tenant_id."
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "plan": {
+              "type": "string",
+              "enum": [
+                "starter",
+                "pro"
+              ]
+            },
+            "timezone": {
+              "type": "string",
+              "description": "IANA tz, e.g. America/Monterrey"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "event_id": "7F730463205D77F288C9B0C27E",
+  "event_type": "inventory.stock.low.v1",
+  "occurred_at": "2026-09-12T20:14:03.311Z",
+  "tenant_id": "11111111-1111-4111-8111-111111111111",
+  "branch_id": "22222222-2222-4222-8222-222222222222",
+  "correlation_id": "33333333-3333-4333-8333-333333333333",
+  "causation_id": null,
+  "producer": "inventory",
+  "schema_version": 1,
+  "payload": {
+    "supply_id": "44B40FA70A1A823583C745FF9B",
+    "name": "Coffee beans",
+    "quantity_remaining": 800,
+    "unit": "g",
+    "minimum_threshold": 1000
+  }
+}

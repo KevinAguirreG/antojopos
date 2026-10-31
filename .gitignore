@@ -1,0 +1,32 @@
+# Environment
+.env
+.env.*
+!.env.example
+
+# Dependencies
+/vendor/
+services/*/vendor/
+node_modules/
+apps/*/node_modules/
+
+# Builds
+services/*/bin/
+apps/*/dist/
+*.log
+
+# Terraform
+infra/terraform/**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+
+# Claude Code
+**/.claude/settings.local.json
+CLAUDE.local.md
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json

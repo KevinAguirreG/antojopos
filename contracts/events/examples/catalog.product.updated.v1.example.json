@@ -1,0 +1,17 @@
+{
+  "event_id": "6E82F0A5570A0C3C1AC60EAB19",
+  "event_type": "catalog.product.updated.v1",
+  "occurred_at": "2026-09-12T20:14:03.311Z",
+  "tenant_id": "11111111-1111-4111-8111-111111111111",
+  "branch_id": "22222222-2222-4222-8222-222222222222",
+  "correlation_id": "33333333-3333-4333-8333-333333333333",
+  "causation_id": null,
+  "producer": "catalog",
+  "schema_version": 1,
+  "payload": {
+    "product_id": "7750F7EDA495BFDB2E6C52C5B7",
+    "name": "Cappuccino 12oz",
+    "price_cents": 6500,
+    "active": true
+  }
+}

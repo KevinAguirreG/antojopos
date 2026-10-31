@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://antojopos.dev/contracts/events/identity.branch.created.v1.json",
+  "title": "identity.branch.created.v1",
+  "allOf": [
+    {
+      "$ref": "_envelope.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "const": "identity.branch.created.v1"
+        },
+        "producer": {
+          "const": "identity"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "branch_id",
+            "tenant_id",
+            "name",
+            "timezone"
+          ],
+          "properties": {
+            "branch_id": {
+              "type": "string",
+              "format": "uuid",
+              "description": ""
+            },
+            "tenant_id": {
+              "type": "string",
+              "format": "uuid",
+              "description": ""
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "timezone": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

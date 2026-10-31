@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://antojopos.dev/contracts/events/inventory.stock.depleted.v1.json",
+  "title": "inventory.stock.depleted.v1",
+  "allOf": [
+    {
+      "$ref": "_envelope.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "const": "inventory.stock.depleted.v1"
+        },
+        "producer": {
+          "const": "inventory"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "supply_id",
+            "affected_product_refs"
+          ],
+          "properties": {
+            "supply_id": {
+              "type": "string",
+              "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+              "description": ""
+            },
+            "name": {
+              "type": "string"
+            },
+            "affected_product_refs": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+                "description": ""
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

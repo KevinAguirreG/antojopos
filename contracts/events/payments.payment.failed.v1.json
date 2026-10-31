@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://antojopos.dev/contracts/events/payments.payment.failed.v1.json",
+  "title": "payments.payment.failed.v1",
+  "allOf": [
+    {
+      "$ref": "_envelope.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "const": "payments.payment.failed.v1"
+        },
+        "producer": {
+          "const": "payments"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "order_id",
+            "payment_id",
+            "reason"
+          ],
+          "properties": {
+            "order_id": {
+              "type": "string",
+              "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+              "description": ""
+            },
+            "payment_id": {
+              "type": "string",
+              "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+              "description": ""
+            },
+            "reason": {
+              "type": "string",
+              "enum": [
+                "card_declined",
+                "insufficient_cash",
+                "gateway_timeout",
+                "other"
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
+}

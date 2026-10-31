@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://antojopos.dev/contracts/events/_envelope.schema.json",
+  "title": "Event envelope",
+  "description": "The common shape of every event in AntojoPOS. See docs/technical-design.md §3. Doesn't change without versioning: it's the contract between all eight services.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_id", "event_type", "occurred_at", "tenant_id",
+    "correlation_id", "producer", "schema_version", "payload"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+      "description": "ULID. The consumer's idempotency key."
+    },
+    "event_type": {
+      "type": "string",
+      "pattern": "^[a-z_]+\\.[a-z_]+\\.[a-z_]+\\.v[0-9]+$",
+      "description": "<service>.<aggregate>.<fact in past tense>.v<n>. Describes something that already happened."
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC, ISO 8601."
+    },
+    "tenant_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "branch_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Absent only in tenant-scoped events (e.g. tenant.created)."
+    },
+    "correlation_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Travels from the first HTTP request and threads through the whole saga."
+    },
+    "causation_id": {
+      "type": ["string", "null"],
+      "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+      "description": "event_id of the event that caused this one. Null if it's first in the chain."
+    },
+    "producer": {
+      "type": "string",
+      "enum": ["identity", "catalog", "orders", "payments", "inventory", "reporting", "kds-notifications", "gateway"]
+    },
+    "schema_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "payload": {
+      "type": "object"
+    }
+  }
+}

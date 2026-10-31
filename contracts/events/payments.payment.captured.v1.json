@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://antojopos.dev/contracts/events/payments.payment.captured.v1.json",
+  "title": "payments.payment.captured.v1",
+  "allOf": [
+    {
+      "$ref": "_envelope.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "const": "payments.payment.captured.v1"
+        },
+        "producer": {
+          "const": "payments"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "order_id",
+            "payment_id",
+            "method",
+            "amount_cents"
+          ],
+          "properties": {
+            "order_id": {
+              "type": "string",
+              "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+              "description": ""
+            },
+            "payment_id": {
+              "type": "string",
+              "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+              "description": ""
+            },
+            "method": {
+              "type": "string",
+              "enum": [
+                "cash",
+                "card",
+                "transfer",
+                "mixed"
+              ]
+            },
+            "amount_cents": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Cents, MXN."
+            },
+            "tip_cents": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Cents, MXN.",
+              "default": 0
+            }
+          }
+        }
+      }
+    }
+  ]
+}

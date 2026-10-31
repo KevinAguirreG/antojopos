@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://antojopos.dev/contracts/events/catalog.product.updated.v1.json",
+  "title": "catalog.product.updated.v1",
+  "allOf": [
+    {
+      "$ref": "_envelope.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "const": "catalog.product.updated.v1"
+        },
+        "producer": {
+          "const": "catalog"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "product_id",
+            "name",
+            "price_cents",
+            "active"
+          ],
+          "properties": {
+            "product_id": {
+              "type": "string",
+              "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+              "description": "Public product identifier."
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160
+            },
+            "price_cents": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Cents, MXN."
+            },
+            "active": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

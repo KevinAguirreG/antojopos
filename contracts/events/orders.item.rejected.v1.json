@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://antojopos.dev/contracts/events/orders.item.rejected.v1.json",
+  "title": "orders.item.rejected.v1",
+  "allOf": [
+    {
+      "$ref": "_envelope.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "const": "orders.item.rejected.v1"
+        },
+        "producer": {
+          "const": "orders"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "order_id",
+            "line_id",
+            "reason"
+          ],
+          "properties": {
+            "order_id": {
+              "type": "string",
+              "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+              "description": ""
+            },
+            "line_id": {
+              "type": "string",
+              "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+              "description": ""
+            },
+            "reason": {
+              "type": "string",
+              "enum": [
+                "unavailable_after_reconnect",
+                "kitchen_86",
+                "other"
+              ],
+              "description": "unavailable_after_reconnect: synced offline and was no longer available (ADR-0009, ADR-0003)."
+            }
+          }
+        }
+      }
+    }
+  ]
+}
