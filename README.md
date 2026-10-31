@@ -138,4 +138,6 @@ Demo tenant credentials in `docs/demo-credentials.md`.
 
 ## License
 
-TBD. If the commercial goal stays on the table, a source-available, non-commercial license (BSL or similar) is a more reasonable choice than MIT.
+Source-available under the [PolyForm Noncommercial License 1.0.0](LICENSE.md). Reading, studying, and running it for personal or evaluation purposes is free. Commercial use, including running it for a restaurant or any business, requires a separate commercial license: contact the author. The reasoning is in [ADR-0007](docs/adr/0007-repository-license.md).
+
+This is not open source by the OSI definition, and outside contributions can't be merged until a contributor license agreement exists.

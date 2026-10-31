@@ -10,6 +10,7 @@ ADRs don't get deleted or edited when a decision changes: they get marked **Supe
 | [0002](0002-tenant-column-multi-tenancy.md) | Multi-tenancy via a tenant column, with RLS in phase 7 | Accepted |
 | [0003](0003-offline-append-only-strategy.md) | Offline sync via append-only lines with a client-generated ULID | Proposed |
 | [0004](0004-language-selection.md) | Three languages (Go, PHP, TypeScript) assigned by service need | Accepted |
+| [0007](0007-repository-license.md) | PolyForm Noncommercial license, commercial licenses sold separately | Accepted |
 | [0008](0008-visual-identity.md) | "Instrument" visual identity and the AntojoPOS name | Accepted |
 | [0009](0009-product-availability.md) | `orders` owns shift-level availability; `catalog` owns the definition | Accepted |
 
@@ -19,4 +20,3 @@ ADRs don't get deleted or edited when a decision changes: they get marked **Supe
 |---|---|---|
 | 0005 | RabbitMQ instead of Kafka | Session 23 |
 | 0006 | ECS Fargate vs. EKS, with the cost estimate | Session 71 |
-| 0007 | Repository license (MIT vs. BSL) | Before publishing it |
